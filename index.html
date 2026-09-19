@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marty McFly | Currículo</title>
+
+  <!-- Fontes do projeto Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="app" class="pagina" v-cloak>
+
+    <header class="topo">
+      <div class="logo">{{ perfil.iniciais }}</div>
+      <div>
+        <h1 class="nome">{{ perfil.nome }}</h1>
+        <p class="cargo">{{ perfil.cargo }}</p>
+      </div>
+    </header>
+
+    <div class="grade">
+
+      <main class="principal">
+        <section>
+          <p>{{ perfil.resumo }}</p>
+        </section>
+
+        <section>
+          <h2 class="rotulo">Experiências Profissionais</h2>
+          <article class="item" v-for="exp in experiencias" :key="exp.titulo">
+            <h3>{{ exp.titulo }}</h3>
+            <p class="subtitulo">{{ exp.subtitulo }}</p>
+            <p>{{ exp.texto }}</p>
+          </article>
+        </section>
+      </main>
+
+      <aside class="lateral">
+        <section>
+          <h2 class="rotulo">Educação</h2>
+          <article class="item" v-for="edu in educacao" :key="edu.titulo">
+            <h3>{{ edu.titulo }}</h3>
+            <p class="subtitulo">{{ edu.subtitulo }}</p>
+            <p>{{ edu.texto }}</p>
+          </article>
+        </section>
+
+        <section class="contato">
+          <h2 class="rotulo">Contato</h2>
+          <p v-for="c in contato" :key="c.rotulo">
+            <strong>{{ c.rotulo }}:</strong> {{ c.valor }}
+          </p>
+        </section>
+      </aside>
+
+      <footer class="rodape">
+        Copyright 2026 - todos os direitos reservados
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Vue 3 via CDN (não precisa instalar nada) -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.prod.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

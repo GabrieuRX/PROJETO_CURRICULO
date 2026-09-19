@@ -1,0 +1,94 @@
+:root {
+  --amarelo: #F0D62E;
+  --preto: #000;
+  --cinza: #808080;
+  --cinza-claro: #BFBFBF;
+  --linha: #DFDFDF;
+  --sans: "IBM Plex Sans", sans-serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[v-cloak] { display: none; }
+
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 2;
+  color: var(--preto);
+  background: #fff;
+}
+
+.pagina {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 88px 48px 96px;
+}
+
+/* Topo: logo + nome + cargo */
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.logo {
+  width: 120px;
+  height: 120px;
+  background: var(--amarelo);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+}
+.nome  { font: 600 20px/1.4 var(--mono); }
+.cargo { font: 400 16px/1.4 var(--mono); color: var(--cinza); }
+
+/* Grid de 12 colunas: conteúdo principal + lateral */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 32px;
+}
+.principal { grid-column: 1 / 9; }
+.lateral   { grid-column: 9 / 13; padding-left: 32px; }
+
+section { margin-bottom: 48px; }
+
+.rotulo {
+  font: 400 12px/1 var(--mono);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cinza-claro);
+  margin-bottom: 24px;
+}
+
+/* Item de experiência / educação */
+.item { margin-bottom: 40px; }
+.item h3 { font-size: 16px; font-weight: 700; line-height: 1.6; }
+.item .subtitulo { font: 400 16px/1.6 var(--mono); color: var(--cinza); }
+.item p { font-size: 16px; }
+
+/* Contato */
+.contato p { font-size: 14px; line-height: 2; }
+.contato strong { font-family: var(--mono); font-weight: 700; }
+
+/* Rodapé */
+.rodape {
+  grid-column: 1 / 9;
+  border-top: 1px solid var(--linha);
+  padding-top: 32px;
+  font: 400 12px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cinza-claro);
+}
+
+/* Celular e tablet: uma coluna só */
+@media (max-width: 900px) {
+  .pagina { padding: 40px 24px 64px; }
+  .topo { flex-direction: column; align-items: flex-start; }
+  .principal, .lateral, .rodape { grid-column: 1 / -1; }
+  .lateral { padding-left: 0; }
+}
